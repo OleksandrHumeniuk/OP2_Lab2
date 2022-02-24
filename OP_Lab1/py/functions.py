@@ -1,4 +1,3 @@
-
 def chooseMode():
     ch = input("Choose writing mode (1 - for overwriting text, 2 - for adding text): ")
     while ch != "1" and ch != "2":
@@ -6,7 +5,7 @@ def chooseMode():
         ch = input("Choose writing mode (1 - for overwriting text, 2 - for adding text): ")
 
     if ch == "1":
-        return "r"
+        return "w"
     else:
         return "a"
 
@@ -15,13 +14,13 @@ def createInputFile(name, mode):
 
     with open(name, mode) as inputFile:
         combinationCode = 7
-        print("Input your text. ENTER for next line. CTRL+G to stop")
+        print("Input your text. ENTER for next line. Empty line to stop")
         
         line = input()
-        if ord(line[0]) != combinationCode:
+        if line != "":
             inputFile.write(line)
             line = input()
-            while ord(line[0]) != combinationCode:
+            while line != "":
                 inputFile.write("\n" + line)
                 line = input()
 
@@ -58,8 +57,7 @@ def createRepeatingWords(name, n):
     for word in words:
         counter = countWords(word, words)
         if counter <= n:
-            for i in range(len(words)):
-                updatedWords = [s for s in updatedWords if i != word]
+            updatedWords = [s for s in updatedWords if s != word]
     return updatedWords
 
 
@@ -92,10 +90,9 @@ def createOutputFile(outputName, inputName):
 
 def printFile(name, text):
 
-    with open(name, "r") as inputFile:
+    with open(name, "r") as file:
         print(text)
-        with open(name, "r") as inputFile:
-            while True:
-                line = inputFile.readline()
-                if not line: break
-                print(line)
+        while True:
+            line = file.readline()
+            if not line: break
+            print(line, end="")
