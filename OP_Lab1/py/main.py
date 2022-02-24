@@ -1,19 +1,12 @@
 import functions as f
 
+inputName = "/Users/oleksandrhumeniuk/Desktop/input.txt"
+outputName = "/Users/oleksandrhumeniuk/Desktop/output.txt"
 
-def main():
-    inputName = "input.txt"
-    outputName = "output.txt"
+mode = f.chooseMode()
 
-    mode = f.chooseMode()
+f.createInputFile(inputName, mode)
+f.createOutputFile(outputName, inputName)
 
-    f.createInputFile(inputName, mode)
-    f.createOutputFile(outputName, inputName)
-
-    f.printFile(inputName, "Input File:");
-    f.printFile(outputName, "\nOutput File:");
-
-
-if __name__ == '__main__':
-    main()
-
+f.printFile(inputName, "\nInput File:");
+f.printFile(outputName, "\n\nOutput File:");
