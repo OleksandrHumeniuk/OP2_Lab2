@@ -1,12 +1,19 @@
 import functions as f
 
-inputName = "/Users/oleksandrhumeniuk/Desktop/input.txt"
-outputName = "/Users/oleksandrhumeniuk/Desktop/output.txt"
 
-mode = f.chooseMode()
+def main():
+    inputName = "input.txt"                     # Name of input file
+    outputName = "output.txt"                   # Name of output file
 
-f.createInputFile(inputName, mode)
-f.createOutputFile(outputName, inputName)
+    mode = f.chooseMode()                       # Variable for mode of information input (adding/overwriting)
 
-f.printFile(inputName, "\nInput File:");
-f.printFile(outputName, "\n\nOutput File:");
+    f.createInputFile(inputName, mode)          # Creates input file based on inputted text
+    f.createOutputFile(outputName, inputName)   # Creates outfile file based on input file
+
+    f.printFile(inputName, "\nInput File:");        # Outputs input file in console
+    f.printFile(outputName, "\n\nOutput File:");    # Outputs output file in console
+
+
+if __name__ == '__main__':
+    main()
+
